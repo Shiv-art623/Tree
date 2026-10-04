@@ -46,12 +46,24 @@ vector<int> levelOrder(Node* root){
     }
     return ans;
 }
+
+//Find the size of Binary Tree----
+void Totalh(Node* root, int &count){
+    if(root == NULL) return;
+    count++;
+    Totalh(root->left,count);
+    Totalh(root->right, count);
+}
 int main(){
     cout<<"enter the root Node";
     Node *root;
     root = BinaryTree();
     vector<int> ans = levelOrder(root);
     for(auto i : ans) cout<<i<<" ";
+    int count = 0;
+    Totalh(root, count);
+    cout<<count;
+
     return 0;
     
 }

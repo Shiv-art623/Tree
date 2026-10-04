@@ -32,6 +32,8 @@ Node* BinaryTree(){
     return temp;
 }
 
+
+//TC = O(n) and SC = O(n)
 vector<int> levelOrder(Node* root){
     queue<Node*> q;
     q.push(root);
@@ -54,17 +56,24 @@ void Totalh(Node* root, int &count){
     Totalh(root->left,count);
     Totalh(root->right, count);
 }
+
+//Another way for finding the size of Binary Tree
+int TotalNode(Node *root){
+    if(root == NULL) return 0;
+    return (1+TotalNode(root->left)+TotalNode(root->right));
+}
 int main(){
     cout<<"enter the root Node";
     Node *root;
     root = BinaryTree();
     vector<int> ans = levelOrder(root);
     for(auto i : ans) cout<<i<<" ";
+    cout<<endl;
     int count = 0;
     Totalh(root, count);
-    cout<<count;
-
+    cout<<count<<endl;
+    cout<<TotalNode(root);
+    
     return 0;
     
 }
-//TC = O(n) and SC = O(n)
